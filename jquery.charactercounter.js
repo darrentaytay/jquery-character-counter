@@ -19,20 +19,19 @@
 		var defaults = {	
 			limit: 150,
 			counter: { 
-				element: 'span', 
+				wrapper: 'span', 
 				css_class: 'counter',
 				format: '%1'
 			},
 			exceeded: { 
-				css_class: 'exceeded', 
-				callback: null 
+				css_class: 'exceeded'
 			}
 		}; 
 			
 		var options = $.extend(defaults, options);
 
 		return this.each(function() {
-			$(this).after('<'+ options.counter.element +' class="' + options.counter.css + '"></'+ options.counter.element +'>');
+			$(this).after('<'+ options.counter.wrapper +' class="' + options.counter.css_class + '"></'+ options.counter.wrapper +'>');
 
 			bind_events(this);
 			check_count(this);
@@ -50,14 +49,14 @@
 
 			if( remaining < 0 )
 			{
-				$(element).next().addClass(options.exceeded.css_class);
+				$(element).next("." + options.counter.css_class).addClass(options.exceeded.css_class);
 			}
 			else
 			{
-				$(element).next().removeClass(options.exceeded.css_class);
+				$(element).next("." + options.counter.css_class).removeClass(options.exceeded.css_class);
 			}
 
-			$(element).next().html(render_text(remaining));
+			$(element).next("." + options.counter.css_class).html(render_text(remaining));
 		};	  
 
 		function bind_events(element)

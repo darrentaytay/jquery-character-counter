@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<style>
+		.exceeded { color: red; }
+		textarea { width: 200px; height: 50px; }
+	</style>
+	<title>jQuery Character Counter Demo</title>
+</head>
+<body>
+
+	<header role="banner">
+		<h1>jQuery Character Counter Demo</h1>
+	</header>
+	
+	<div class="wrap">
+		<main role="main">	
+			<section>
+				<header>
+					<h2>Examples</h2>
+				</header>
+				
+				<article id="examples">
+					<div class="example">
+						<h3>#1 - Default Usage</h3>
+						<form>
+							<textarea id="name"></textarea>
+						</form>
+					</div>
+					<div class="example">
+						<h3>#2 - Multiple Inputs</h3>
+						<form>
+							<p>
+								<textarea class="count_me"></textarea>
+							</p>
+							<p>
+								<textarea class="count_me"></textarea>
+							</p>
+							<p>
+								<textarea class="count_me"></textarea>
+							</p>
+						</form>
+					</div>
+					<div class="example">
+						<h3>#3 - Custom Counter Format</h3>
+						<form>
+							<p>
+								<textarea id="custom_format_1"></textarea>
+							</p>
+							<p>
+								<textarea id="custom_format_2"></textarea>
+							</p>
+						</form>
+					</div>
+				</article>
+			</section>
+		</main>
+	</div>
+
+	<footer role="contentinfo">
+		<small>Copyright &copy; <time datetime="2013">2013</time></small>		
+	</footer>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>	
+	<script type="text/javascript" src="jquery.charactercounter.js"></script>
+	<script>
+		$(function(){
+			//Example #1
+            $("#name").characterCounter();
+
+            //Example #2
+            $(".count_me").characterCounter();
+
+            //Example #3
+            $("#custom_format_1").characterCounter({
+            	counter: {
+            		format: '%1 characters remaining.'
+            	}
+            });
+
+            $("#custom_format_2").characterCounter({
+            	counter: {
+            		format: 'Characters Remaining: %1'
+            	}
+            });
+		});
+	</script>
+</body>
+</html>
