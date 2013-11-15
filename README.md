@@ -55,15 +55,19 @@ The following options are currently available:
 ```javascript
 {
 limit: 150,
-counter_wrapper: 'span',
-counter_css_class: 'counter',
-counter_format: '%1',
-counter_exceeded_css_class: 'exceeded'
+counterWrapper: 'span',
+counterCssClass: 'counter',
+counterFormat: '%1',
+counterExceededCssClass: 'exceeded',
+onExceed: function(count){},
+onDeceed: function(count){}
 }
 ```
 
 __limit__ - the number of characters you wish to limit.  
-__counter_wrapper__ - the element you wish to wrap your counter in.  
-__counter_css_class__ - the CSS class to apply to your counter.  
-__counter_format__ - the format of your counter text where '%1' will be replaced with the remaining character count.  
-__counter_exceeded_css_class__ - the CSS class to apply when your limit has been exceeded.  
+__counterWrapper__ - the element you wish to wrap your counter in.  
+__counterCssClass__ - the CSS class to apply to your counter.  
+__counterFormat__ - the format of your counter text where '%1' will be replaced with the remaining character count.  
+__counterExceededCssClass__ - the CSS class to apply when your limit has been exceeded.
+__onExceed__ - this function is called when the limit is breached 
+__onDeceed__ - this function is called when the limit, having previously been exceeded, is now deceeded
