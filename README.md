@@ -53,19 +53,17 @@ $("#count_me").characterCounter({
 The following options are currently available:
 
 ```javascript
+{
 limit: 150,
-counter: { 
-  wrapper: 'span', 
-	css_class: 'counter',
-	format: '%1'
-},
-exceeded: { 
-	css_class: 'exceeded'
+counter_wrapper: 'span',
+counter_css_class: 'counter',
+counter_format: '%1',
+counter_exceeded_css_class: 'exceeded'
 }
 ```
 
 __limit:__ - the number of characters you wish to limit.  
-__counter.wrapper__ - the element you wish to wrap your counter in.  
-__counter.css_class__ - the CSS class to apply to your counter.  
-__counter.format__ - the format of your counter text where '%1' will be replaced with the remaining character count.  
-__exceeded.css_class__ - the CSS class to apply when your limit has been exceeded.  
+__counter_wrapper__ - the element you wish to wrap your counter in.  
+__counter_css_class__ - the CSS class to apply to your counter.  
+__counter_format__ - the format of your counter text where '%1' will be replaced with the remaining character count.  
+__counter_exceeded_css_class__ - the CSS class to apply when your limit has been exceeded.  
