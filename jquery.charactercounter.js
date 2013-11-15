@@ -16,54 +16,63 @@
 
     $.fn.characterCounter = function(options){
       
-        var defaults = {    
+        var defaults = {
+            exceeded: false,
             limit: 150,
-            counter_wrapper: 'span',
-            counter_css_class: 'counter',
-            counter_format: '%1',
-            counter_exceeded_css_class: 'exceeded'
+            counterWrapper: 'span',
+            counterCssClass: 'counter',
+            counterFormat: '%1',
+            counterExceededCssClass: 'exceeded',
+            onExceed: function(count) {},
+            onUnexceed: function(count) {}
         }; 
             
         var options = $.extend(defaults, options);
 
         return this.each(function() {
-            $(this).after('<'+ options.counter_wrapper +' class="' + options.counter_css_class + '"></'+ options.counter_wrapper +'>');
+            $(this).after('<'+ options.counterWrapper +' class="' + options.counterCssClass + '"></'+ options.counterWrapper +'>');
 
-            bind_events(this);
-            check_count(this);
+            bindEvents(this);
+            checkCount(this);
         });
 
-        function render_text(count)
+        function renderText(count)
         {
-            return options.counter_format.replace(/%1/, count);
+            return options.counterFormat.replace(/%1/, count);
         }
 
-        function check_count(element)
+        function checkCount(element)
         {
-            var character_count  = $(element).val().length;
-            var remaining        = options.limit - character_count;
+            var characterCount  = $(element).val().length;
+            var remaining        = options.limit - characterCount;
 
             if( remaining < 0 )
             {
-                $(element).next("." + options.counter_css_class).addClass(options.counter_exceeded_css_class);
+                $(element).next("." + options.counterCssClass).addClass(options.counterExceededCssClass);
+                options.exceeded = true;
+                options.onExceed(characterCount);
             }
             else
             {
-                $(element).next("." + options.counter_css_class).removeClass(options.counter_exceeded_css_class);
+                if(options.exceeded) {
+                    $(element).next("." + options.counterCssClass).removeClass(options.counterExceededCssClass);
+                    options.onUnexceed(characterCount);
+                    options.exceeded = false;
+                }
             }
 
-            $(element).next("." + options.counter_css_class).html(render_text(remaining));
+            $(element).next("." + options.counterCssClass).html(renderText(remaining));
         };    
 
-        function bind_events(element)
+        function bindEvents(element)
         {
             $(element)
-                .bind("keyup keypress", function () { 
-                    check_count(element); 
+                .bind("keyup", function () { 
+                    checkCount(element); 
                 })
                 .bind("paste", function () { 
                     var self = this;
-                    setTimeout(function () { check_count(self); }, 0);
+                    setTimeout(function () { checkCount(self); }, 0);
                 });
         }
     };
