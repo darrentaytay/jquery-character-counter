@@ -24,7 +24,7 @@
             counterFormat: '%1',
             counterExceededCssClass: 'exceeded',
             onExceed: function(count) {},
-            onUnexceed: function(count) {}
+            onDeceed: function(count) {}
         }; 
             
         var options = $.extend(defaults, options);
@@ -56,7 +56,7 @@
             {
                 if(options.exceeded) {
                     $(element).next("." + options.counterCssClass).removeClass(options.counterExceededCssClass);
-                    options.onUnexceed(characterCount);
+                    options.onDeceed(characterCount);
                     options.exceeded = false;
                 }
             }
