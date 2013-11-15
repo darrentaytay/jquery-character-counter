@@ -7,6 +7,7 @@ __Features:__
 * Right click & paste support
 * Customizable wrapper and css classes
 * Customizable counter format
+* Callbacks for exceeding and deceeding the specified limit
 
 ## Getting Started
 
