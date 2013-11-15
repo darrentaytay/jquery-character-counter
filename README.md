@@ -62,7 +62,7 @@ counter_exceeded_css_class: 'exceeded'
 }
 ```
 
-__limit:__ - the number of characters you wish to limit.  
+__limit__ - the number of characters you wish to limit.  
 __counter_wrapper__ - the element you wish to wrap your counter in.  
 __counter_css_class__ - the CSS class to apply to your counter.  
 __counter_format__ - the format of your counter text where '%1' will be replaced with the remaining character count.  
