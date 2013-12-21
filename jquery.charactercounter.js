@@ -39,14 +39,14 @@
         
         function customFields (params)
         {
-			var html='';
+		var html='';
 
-			for (var i in params)
-			{
-				html += ' '+i+'="'+params[i]+'"';
-			}
+		for (var i in params)
+		{
+			html += ' '+i+'="'+params[i]+'"';
+		}
 
-			return html;
+		return html;
         }
 
         function renderText(count)
