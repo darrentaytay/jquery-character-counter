@@ -25,28 +25,40 @@
             counterExceededCssClass: 'exceeded',
             onExceed: function(count) {},
             onDeceed: function(count) {},
-
-            customFields: {class:'container', 'isjustatestchangeit':'thevalueisthis', youhaveto:'separatethisthatway', 'onlythefirstequalcharacter':'willbecatch'},
+            customFields: {},
         }; 
             
         var options = $.extend(defaults, options);
 
         return this.each(function() {
-            $(this).after('<'+ options.counterWrapper +customFields(options.customFields)+' class="' + options.counterCssClass + '"></'+ options.counterWrapper +'>');
+            $(this).after(generateCounter());
             bindEvents(this);
             checkCount(this);
         });
         
-        function customFields (params)
+        function customFields(params)
         {
-		var html='';
+            var html='';
 
-		for (var i in params)
-		{
-			html += ' '+i+'="'+params[i]+'"';
-		}
+            for (var i in params)
+            {
+                html += ' ' + i + '="' + params[i] + '"';
+            }
 
-		return html;
+            return html;
+        }
+
+        function generateCounter()
+        {
+            var classString = options.counterCssClass;
+
+            if(options.customFields.class)
+            {
+                classString += " " + options.customFields.class;
+                delete options.customFields['class'];
+            }
+            
+            return '<'+ options.counterWrapper +customFields(options.customFields)+' class="' + classString + '"></'+ options.counterWrapper +'>';
         }
 
         function renderText(count)
