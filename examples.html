@@ -19,6 +19,8 @@
 				<header>
 					<h2>Examples</h2>
 				</header>
+
+				<p>View the source of this page to see the code for each example below.</p>
 				
 				<article id="examples">
 					<div class="example">
@@ -60,6 +62,16 @@
 							</p>
 						</form>
 					</div>
+					<div class="example">
+						<h3>#5 - Custom Fields</h3>
+						<p>Inspect counter element to see custom fields applied.</p>
+						<p>
+						<form>
+							<p>
+								<textarea id="custom_fields"></textarea>
+							</p>
+						</form>
+					</div>
 				</article>
 			</section>
 		</main>
@@ -94,6 +106,14 @@
             	},
             	onDeceed: function(){
             		alert("Limit deceeded.");
+            	}
+            });
+
+            //Exampe #5
+            $("#custom_fields").characterCounter({
+            	customFields: {
+            		'class': 'test this class',
+            		'data-id': 'custom-field-example'
             	}
             });
 		});
