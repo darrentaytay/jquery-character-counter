@@ -24,17 +24,30 @@
             counterFormat: '%1',
             counterExceededCssClass: 'exceeded',
             onExceed: function(count) {},
-            onDeceed: function(count) {}
+            onDeceed: function(count) {},
+
+            customFields: {class:'container', 'isjustatestchangeit':'thevalueisthis', youhaveto:'separatethisthatway', 'onlythefirstequalcharacter':'willbecatch'},
         }; 
             
         var options = $.extend(defaults, options);
 
         return this.each(function() {
-            $(this).after('<'+ options.counterWrapper +' class="' + options.counterCssClass + '"></'+ options.counterWrapper +'>');
-
+            $(this).after('<'+ options.counterWrapper +customFields(options.customFields)+' class="' + options.counterCssClass + '"></'+ options.counterWrapper +'>');
             bindEvents(this);
             checkCount(this);
         });
+        
+        function customFields (params)
+        {
+		var html='';
+
+		for (var i in params)
+		{
+			html += ' '+i+'="'+params[i]+'"';
+		}
+
+		return html;
+        }
 
         function renderText(count)
         {
