@@ -72,6 +72,27 @@
 							</p>
 						</form>
 					</div>
+					<div class="example">
+						<h3>#6 - Counter Selector (<span id="my_counter"></span> characters left)</h3>
+						<p>Counter could be anywhere on the page.</p>
+						<p>
+						<form>
+							<p>
+								<textarea id="counter_selector"></textarea>
+							</p>
+						</form>
+					</div>
+					<div class="example">
+						<h3>#7 - Multiple Counters</h3>
+						<form>
+							<p style="width: 205px;">
+                <span class="a_counter" style="float: right;"></span>
+								<textarea id="multiple_counters"></textarea>
+                <span class="a_counter"></span>
+							</p>
+              </div>
+						</form>
+					</div>
 				</article>
 			</section>
 		</main>
@@ -116,6 +137,17 @@
             		'data-id': 'custom-field-example'
             	}
             });
+            
+            //Example #6
+            $("#counter_selector").characterCounter({
+              counterSelector: '#my_counter'
+            });
+            
+            //Example #6
+            $("#multiple_counters").characterCounter({
+              counterSelector: '.a_counter'
+            });
+            
 		});
 	</script>
 </body>

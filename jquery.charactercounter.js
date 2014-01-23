@@ -18,6 +18,7 @@
       
         var defaults = {
             exceeded: false,
+            counterSelector: false,
             limit: 150,
             counterWrapper: 'span',
             counterCssClass: 'counter',
@@ -31,7 +32,9 @@
         var options = $.extend(defaults, options);
 
         return this.each(function() {
-            $(this).after(generateCounter());
+            if (!options.counterSelector) {
+              $(this).after(generateCounter());            
+            }
             bindEvents(this);
             checkCount(this);
         });
@@ -70,23 +73,24 @@
         {
             var characterCount  = $(element).val().length;
             var remaining        = options.limit - characterCount;
+            var counter = options.counterSelector ? $(options.counterSelector) : $(element).next("." + options.counterCssClass);
 
             if( remaining < 0 )
             {
-                $(element).next("." + options.counterCssClass).addClass(options.counterExceededCssClass);
+                counter.addClass(options.counterExceededCssClass);
                 options.exceeded = true;
                 options.onExceed(characterCount);
             }
             else
             {
                 if(options.exceeded) {
-                    $(element).next("." + options.counterCssClass).removeClass(options.counterExceededCssClass);
+                    counter.removeClass(options.counterExceededCssClass);
                     options.onDeceed(characterCount);
                     options.exceeded = false;
                 }
             }
 
-            $(element).next("." + options.counterCssClass).html(renderText(remaining));
+            counter.html(renderText(remaining));
         };    
 
         function bindEvents(element)
