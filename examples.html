@@ -26,7 +26,9 @@
 					<div class="example">
 						<h3>#1 - Default Usage</h3>
 						<form>
-							<textarea id="name"></textarea>
+                            <p><input id="name"></input></p>
+
+							<p><textarea id="profile"></textarea></p>
 						</form>
 					</div>
 					<div class="example">
@@ -107,6 +109,7 @@
 		$(function(){
 			//Example #1
             $("#name").characterCounter();
+            $("#profile").characterCounter();
 
             //Example #2
             $(".count_me").characterCounter();
