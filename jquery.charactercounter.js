@@ -34,6 +34,12 @@
         var options = $.extend(defaults, opts);
 
         return this.each(function() {
+            var html5len = $(this).attr('maxlength');
+            if (typeof html5len !== typeof undefined && html5len !== false) {
+                $.extend(defaults, {
+                    limit: parseInt($(this).attr('maxlength'))
+                });
+            }
             if (!options.counterSelector) {
                 $(this).after(generateCounter());
             }
