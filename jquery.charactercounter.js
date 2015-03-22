@@ -87,7 +87,7 @@
         function checkCount(element)
         {
             var characterCount = $(element).val().length;
-            var counter = options.counterSelector ? $(options.counterSelector) : $(element).next("." + options.counterCssClass);
+            var counter = options.counterSelector ? $(options.counterSelector) : $(element).siblings("." + options.counterCssClass);
             var remaining = options.limit - characterCount;
             var condition = remaining < 0;
 
