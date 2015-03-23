@@ -49,9 +49,9 @@
 
         function customFields(params)
         {
-            var html='';
+            var i, html='';
 
-            for (var i in params)
+            for (i in params)
             {
                 html += ' ' + i + '="' + params[i] + '"';
             }
@@ -87,7 +87,7 @@
         function checkCount(element)
         {
             var characterCount = $(element).val().length;
-            var counter = options.counterSelector ? $(options.counterSelector) : $(element).next("." + options.counterCssClass);
+            var counter = options.counterSelector ? $(options.counterSelector) : $(element).siblings("." + options.counterCssClass);
             var remaining = options.limit - characterCount;
             var condition = remaining < 0;
 
@@ -118,10 +118,10 @@
         function bindEvents(element)
         {
             $(element)
-                .bind("keyup", function () {
+                .on("keyup", function () {
                     checkCount(element);
                 })
-                .bind("paste", function () {
+                .on("paste", function () {
                     var self = this;
                     setTimeout(function () { checkCount(self); }, 0);
                 });
