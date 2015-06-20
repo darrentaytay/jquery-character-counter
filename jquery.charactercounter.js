@@ -1,5 +1,5 @@
 /**
- * Character Counter v1.x
+ * Character Counter v1.5.0
  * ======================
  *
  * Character Counter is a simple, Twitter style character counter.
