@@ -74,3 +74,15 @@ __counterExceededCssClass__ - the CSS class to apply when your limit has been ex
 __onExceed__ - this function is called when the limit is breached   
 __onDeceed__ - this function is called when the limit, having previously been exceeded, is now deceeded
 __customFields__ - key value pairs of custom options to be added to the counter such as class, data attributes etc.
+
+### Methods
+
+The following methods are currently available:
+
+## refresh
+
+Can be used to programtically refresh the character count of a textarea.
+
+```javascript
+$('textarea').characterCounter('refresh');
+```

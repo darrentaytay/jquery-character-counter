@@ -15,7 +15,7 @@
 (function($) {
 
     $.fn.characterCounter = function(opts){
-
+        
         var defaults = {
             exceeded: false,
             counterSelector: false,
@@ -32,6 +32,21 @@
         };
 
         var options = $.extend(defaults, opts);
+        
+        var methods = {
+            refresh: function(objects) {
+                
+                $.each(objects, function(key, element){
+                   checkCount(element);
+                });
+            }
+        };
+        
+        if (methods[opts]) {
+            var arguments = [this];
+            
+            return methods[ opts ].apply( this, arguments )
+        }
 
         return this.each(function() {
             var html5len = $(this).attr('maxlength');
