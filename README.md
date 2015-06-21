@@ -18,9 +18,9 @@ To get started with the character counter, simply reference jQuery and the jQuer
 <script type="text/javascript" src="jquery.charactercounter.js"></script>
 ```
 
-### Examples
+## Examples
 
-#### Default Usage
+### Default Usage
 
 __HTML:__
 ```html
@@ -33,7 +33,7 @@ __Javascript:__
 $("#count_me").characterCounter();
 ```
 
-#### Custom Limit
+### Custom Limit
 
 __HTML:__
 ```html
@@ -49,7 +49,7 @@ $("#count_me").characterCounter({
 ```
 ***
 
-### Options
+## Options
 
 The following options are currently available:
 
@@ -75,11 +75,11 @@ __onExceed__ - this function is called when the limit is breached
 __onDeceed__ - this function is called when the limit, having previously been exceeded, is now deceeded
 __customFields__ - key value pairs of custom options to be added to the counter such as class, data attributes etc.
 
-### Methods
+## Methods
 
 The following methods are currently available:
 
-## refresh
+### refresh
 
 Can be used to programtically refresh the character count of a textarea.
 
