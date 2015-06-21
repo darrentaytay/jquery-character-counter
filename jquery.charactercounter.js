@@ -1,5 +1,5 @@
 /**
- * Character Counter v1.5.0
+ * Character Counter v1.5.1
  * ======================
  *
  * Character Counter is a simple, Twitter style character counter.
@@ -118,12 +118,8 @@
         function bindEvents(element)
         {
             $(element)
-                .on("keyup", function () {
+                .on("input change", function () {
                     checkCount(element);
-                })
-                .on("paste", function () {
-                    var self = this;
-                    setTimeout(function () { checkCount(self); }, 0);
                 });
         }
     };
