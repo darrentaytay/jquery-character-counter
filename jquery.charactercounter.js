@@ -63,9 +63,9 @@
         {
             var classString = options.counterCssClass;
 
-            if ( options.customFields.class )
+            if ( options.customFields['class'] )
             {
-                classString += " " + options.customFields.class;
+                classString += " " + options.customFields['class'];
                 delete options.customFields['class'];
             }
 
