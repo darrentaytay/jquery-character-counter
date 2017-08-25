@@ -90,7 +90,7 @@
             var characterCount = $(element).val().length;
 
 	    if (options.countNewLineChars) {
-		characterCount+=$(element).val().split(/\r*\n/).length0;
+		characterCount+=$(element).val().split(/\r*\n/).length;
 	    }
 
             var counter = options.counterSelector ? $(options.counterSelector) : $(element).nextAll("." + options.counterCssClass).first();
