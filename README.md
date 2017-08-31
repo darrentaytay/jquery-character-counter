@@ -70,7 +70,9 @@ __limit__ - the number of characters you wish to limit.
 __counterWrapper__ - the element you wish to wrap your counter in.  
 __counterCssClass__ - the CSS class to apply to your counter.  
 __counterFormat__ - the format of your counter text where '%1' will be replaced with the remaining character count.  
+__newLineSymbolCount__ - count new lines  
 __counterExceededCssClass__ - the CSS class to apply when your limit has been exceeded.  
 __onExceed__ - this function is called when the limit is breached   
 __onDeceed__ - this function is called when the limit, having previously been exceeded, is now deceeded
 __customFields__ - key value pairs of custom options to be added to the counter such as class, data attributes etc.
+

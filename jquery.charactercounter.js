@@ -19,6 +19,7 @@
         var defaults = {
             exceeded: false,
             counterSelector: false,
+	    countNewLineChars: false,
             limit: 150,
             renderTotal: false,
             counterWrapper: 'span',
@@ -87,6 +88,11 @@
         function checkCount(element)
         {
             var characterCount = $(element).val().length;
+
+	    if (options.countNewLineChars) {
+		characterCount+=$(element).val().split(/\r*\n/).length;
+	    }
+
             var counter = options.counterSelector ? $(options.counterSelector) : $(element).nextAll("." + options.counterCssClass).first();
             var remaining = options.limit - characterCount;
             var condition = remaining < 0;
