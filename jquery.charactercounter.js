@@ -1,5 +1,5 @@
 /**
- * Character Counter v1.5.1
+ * Character Counter v1.5.2
  * ======================
  *
  * Character Counter is a simple, Twitter style character counter.
@@ -70,16 +70,16 @@
                 delete options.customFields['class'];
             }
 
-            return '<'+ options.counterWrapper +customFields(options.customFields)+' class="' + classString + '"></'+ options.counterWrapper +'>';
+            return '<'+ options.counterWrapper +customFields(options.customFields)+' class="' + classString + '"' + ' data-limit="' + options.limit + '"' + '></'+ options.counterWrapper +'>';
         }
 
-        function renderText(count)
+        function renderText(count, limit)
         {
             var rendered_count = options.counterFormat.replace(/%1/, count);
 
             if ( options.renderTotal )
             {
-                rendered_count += '/'+ options.limit;
+                rendered_count += '/'+ (limit !== undefined ? limit : options.limit);
             }
 
             return rendered_count;
@@ -94,13 +94,14 @@
 	    }
 
             var counter = options.counterSelector ? $(options.counterSelector) : $(element).nextAll("." + options.counterCssClass).first();
-            var remaining = options.limit - characterCount;
+            var counterLimit = counter.attr('data-limit');
+            var remaining = counterLimit - characterCount;
             var condition = remaining < 0;
 
             if ( options.increaseCounting )
             {
                 remaining = characterCount;
-                condition = remaining > options.limit;
+                condition = remaining > counterLimit;
             }
 
             if ( condition )
@@ -118,7 +119,7 @@
                 }
             }
 
-            counter.html(renderText(remaining));
+            counter.html(renderText(remaining, counterLimit));
         }
 
         function bindEvents(element)
